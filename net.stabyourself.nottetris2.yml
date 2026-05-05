@@ -19,8 +19,6 @@ cleanup:
 modules:
   - shared-modules/glu/glu-9.json
   - shared-modules/SDL/SDL-1.2.15.json
-
-  # TODO: use luajit for x86 and x86_64
   - shared-modules/lua5.1/lua-5.1.5.json
 
   - name: libmng
@@ -44,10 +42,9 @@ modules:
         sha256: eaa088ea7544343750096fad2bcf8d14b907c6c3fe9714a56e2b54d391a2e25e
 
       - type: patch
-        path: libdevil-include_IL-il.h.patch
-
-      - type: patch
-        path: libdevil-libpng14.patch
+        paths:
+          - patches/libdevil-include_IL-il.h.patch
+          - patches/libdevil-libpng14.patch
 
       - type: script
         dest-filename: autogen.sh
@@ -73,7 +70,7 @@ modules:
         sha256: a57adcb0cbdc390a9bd8e2fe477bc175799b9ffd3486e01f859a36bf27f7f268
 
       - type: patch
-        path: love-buildfix.patch
+        path: patches/love-buildfix.patch
 
       - type: script
         dest-filename: autogen.sh
